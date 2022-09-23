@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sonarqube
+spec:
+  destination:
+    name: ''
+    namespace: openshift-config
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: sonarqube-provisioning/helm-provisioning
+    repoURL: 'https://github.com/redhat-oraex/cicd-provisioning'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated: null
